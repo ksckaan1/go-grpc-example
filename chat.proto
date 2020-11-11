@@ -1,0 +1,17 @@
+//Söz dizimi için proto3'ü kullanacağız
+syntax = "proto3";
+
+//Go paketi için ayarlarımız
+package chat;
+option go_package=".;chat";
+
+//iletişimde kullanılacak mesajın yapısı
+message Message {
+    string body = 1;
+    //buradaki 1 sıra numarasıdır. Değer ataması değildir.
+}
+
+//rpc servisimiz
+service ChatService {
+    rpc SayHello(Message) returns (Message) {}
+}
